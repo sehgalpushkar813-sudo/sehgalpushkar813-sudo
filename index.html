@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portfolio of Pushkar Sehgal - Computer Science student and aspiring AI & DevOps professional.">
+  <title>Pushkar Sehgal | Portfolio</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    :root {
+      --bg: #0b1020;
+      --card: #121a2f;
+      --text: #f4f7ff;
+      --muted: #aab4cc;
+      --accent: #6c63ff;
+      --accent2: #00d4ff;
+      --border: rgba(255,255,255,0.10);
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(11,16,32,0.88);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-container {
+      max-width: 1100px;
+      margin: auto;
+      padding: 16px 25px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.4rem;
+      font-weight: bold;
+      color: white;
+    }
+
+    .logo span {
+      color: var(--accent2);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: white;
+    }
+
+    section {
+      max-width: 1100px;
+      margin: auto;
+      padding: 100px 25px;
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      background: var(--accent);
+      filter: blur(150px);
+      opacity: 0.25;
+      border-radius: 50%;
+      top: 15%;
+      left: 20%;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.8rem, 8vw, 5.5rem);
+      margin-bottom: 10px;
+    }
+
+    .hero h1 span {
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero h2 {
+      color: var(--muted);
+      font-size: clamp(1.2rem, 3vw, 1.7rem);
+      font-weight: normal;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      max-width: 650px;
+      margin: auto;
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+
+    .buttons {
+      margin-top: 30px;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 22px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+      border: 1px solid var(--border);
+    }
+
+    .btn-primary {
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      color: white;
+      border: none;
+    }
+
+    .btn-secondary {
+      color: white;
+      background: var(--card);
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 45px;
+    }
+
+    .section-title h2 {
+      font-size: 2.3rem;
+      margin-bottom: 8px;
+    }
+
+    .section-title p {
+      color: var(--muted);
+    }
+
+    .about-box {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 35px;
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+
+    .about-box strong {
+      color: white;
+    }
+
+    .skills {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 18px;
+    }
+
+    .skill {
+      background: var(--card);
+      border: 1px solid var(--border);
+      padding: 25px 15px;
+      border-radius: 16px;
+      text-align: center;
+      transition: 0.3s;
+    }
+
+    .skill:hover {
+      transform: translateY(-6px);
+      border-color: var(--accent);
+    }
+
+    .skill .icon {
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+
+    .skill p {
+      color: var(--muted);
+      margin-top: 5px;
+      font-size: 0.9rem;
+    }
+
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 22px;
+    }
+
+    .project {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 28px;
+      transition: 0.3s;
+    }
+
+    .project:hover {
+      transform: translateY(-7px);
+    }
+
+    .project h3 {
+      margin-bottom: 10px;
+    }
+
+    .project p {
+      color: var(--muted);
+      margin-bottom: 18px;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 5px 10px;
+      margin: 3px;
+      background: rgba(108,99,255,0.15);
+      color: #c9c6ff;
+      border-radius: 20px;
+      font-size: 0.8rem;
+    }
+
+    .education-card {
+      background: var(--card);
+      border-left: 4px solid var(--accent);
+      padding: 25px;
+      border-radius: 12px;
+    }
+
+    .education-card p {
+      color: var(--muted);
+    }
+
+    .contact-box {
+      text-align: center;
+      background: linear-gradient(135deg, #151d38, #10182d);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 45px 25px;
+    }
+
+    .contact-box p {
+      color: var(--muted);
+      margin: 10px auto 25px;
+      max-width: 600px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 700px) {
+      .nav-links {
+        gap: 12px;
+        font-size: 0.85rem;
+      }
+
+      .nav-container {
+        padding: 14px 15px;
+      }
+
+      section {
+        padding: 80px 18px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <div class="nav-container">
+      <div class="logo">Pushkar<span>.</span></div>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+
+    <section class="hero" id="home">
+      <div class="hero-content">
+        <p>HELLO, I'M</p>
+        <h1><span>Pushkar Sehgal</span></h1>
+        <h2>Computer Science Student | AI & DevOps Enthusiast</h2>
+        <p>
+          I am a passionate student interested in technology, artificial intelligence,
+          software development and DevOps. I enjoy learning new technologies and
+          building projects that solve real-world problems.
+        </p>
+
+        <div class="buttons">
+          <a href="#projects" class="btn btn-primary">View My Work</a>
+          <a href="#contact" class="btn btn-secondary">Contact Me</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="section-title">
+        <h2>About Me</h2>
+        <p>A little introduction</p>
+      </div>
+
+      <div class="about-box">
+        <p>
+          Hi! I am <strong>Pushkar Sehgal</strong>, a Computer Science student
+          with an interest in <strong>Artificial Intelligence, DevOps, programming
+          and modern web technologies</strong>.
+        </p>
+        <br>
+        <p>
+          I am currently developing my technical skills and exploring how AI and
+          cloud technologies can be used to create useful applications. I believe
+          in learning by building, experimenting and continuously improving.
+        </p>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="section-title">
+        <h2>My Skills</h2>
+        <p>Technologies I am learning and working with</p>
+      </div>
+
+      <div class="skills">
+        <div class="skill">
+          <div class="icon">💻</div>
+          <h3>HTML & CSS</h3>
+          <p>Web Development</p>
+        </div>
+
+        <div class="skill">
+          <div class="icon">🐍</div>
+          <h3>Python</h3>
+          <p>Programming & AI</p>
+        </div>
+
+        <div class="skill">
+          <div class="icon">⚙️</div>
+          <h3>C Programming</h3>
+          <p>Problem Solving</p>
+        </div>
+
+        <div class="skill">
+          <div class="icon">🤖</div>
+          <h3>Artificial Intelligence</h3>
+          <p>AI Concepts</p>
+        </div>
+
+        <div class="skill">
+          <div class="icon">☁️</div>
+          <h3>DevOps</h3>
+          <p>Cloud & Deployment</p>
+        </div>
+
+        <div class="skill">
+          <div class="icon">🔧</div>
+          <h3>Git & GitHub</h3>
+          <p>Version Control</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="section-title">
+        <h2>Projects</h2>
+        <p>Some projects I am working on or planning to build</p>
+      </div>
+
+      <div class="projects">
+
+        <div class="project">
+          <h3>🌐 Personal Portfolio</h3>
+          <p>
+            A responsive personal portfolio website created using HTML and CSS
+            and deployed using a cloud platform.
+          </p>
+          <span class="tag">HTML</span>
+          <span class="tag">CSS</span>
+          <span class="tag">GitHub</span>
+        </div>
+
+        <div class="project">
+          <h3>🤖 AI-Based Project</h3>
+          <p>
+            An upcoming project exploring the use of Artificial Intelligence
+            to solve a practical problem.
+          </p>
+          <span class="tag">AI</span>
+          <span class="tag">Python</span>
+        </div>
+
+        <div class="project">
+          <h3>☁️ DevOps Project</h3>
+          <p>
+            An upcoming project focused on version control, cloud deployment
+            and DevOps practices.
+          </p>
+          <span class="tag">Git</span>
+          <span class="tag">GitHub</span>
+          <span class="tag">DevOps</span>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="education">
+      <div class="section-title">
+        <h2>Education</h2>
+        <p>My academic journey</p>
+      </div>
+
+      <div class="education-card">
+        <h3>Bachelor of Technology / Computer Science</h3>
+        <p>JAIN (Deemed-to-be University)</p>
+        <p>Specialization: AI-Driven DevOps</p>
+        <p>Currently pursuing</p>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="section-title">
+        <h2>Let's Connect</h2>
+        <p>Feel free to connect with me</p>
+      </div>
+
+      <div class="contact-box">
+        <h2>Have a project or idea?</h2>
+        <p>
+          I am always interested in learning, collaborating and exploring
+          new ideas in technology.
+        </p>
+
+        <!-- Replace these links with your actual profiles -->
+        <a href="https://github.com/" target="_blank" class="btn btn-primary">
+          GitHub
+        </a>
+
+        <a href="https://www.linkedin.com/" target="_blank" class="btn btn-secondary">
+          LinkedIn
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    © 2026 Pushkar Sehgal. Built with HTML, CSS & AI.
+  </footer>
+
+</body>
+</html>
